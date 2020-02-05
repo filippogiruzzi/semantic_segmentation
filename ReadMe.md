@@ -1,7 +1,5 @@
 # Semantic Segmentation project
 
-# Voice Activity Detection project
-
 Keywords: Python, TensorFlow, Deep Learning, 
 Semantic Segmentation, UNet, Autonomous Driving,
 Carla simulator

@@ -52,8 +52,8 @@ def main():
         label_fp = os.path.join(labels_dir, fn)
 
         img, label = cv2.imread(img_fp), cv2.imread(label_fp)
-        cv2.imshow('RGB', img)
-        cv2.imshow('SEMSEG', mask_to_rgb(label))
+        cv2.imshow('RGB', cv2.resize(img, (450, 300)))
+        cv2.imshow('SEMSEG', cv2.resize(mask_to_rgb(label), (450, 300)))
         cv2.waitKey(0)
 
 

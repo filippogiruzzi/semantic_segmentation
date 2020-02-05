@@ -1,0 +1,6 @@
+PIL
+tensorflow==1.12.0
+numpy
+matplotlib
+tqdm
+pyyaml

@@ -26,7 +26,7 @@ def mask_to_rgb(semseg_mask, ax=-1):
     mask = semseg_mask[:, :, ax]
     if semseg_mask.shape[-1] > 3:
         mask = np.argmax(semseg_mask, axis=-1)
-    semseg_rgb = np.zeros((semseg_mask.shape[0], semseg_mask.shape[1], 3), dtype=semseg_mask.dtype)
+    semseg_rgb = np.zeros((semseg_mask.shape[0], semseg_mask.shape[1], 3), dtype=np.uint8)
     for class_id in CLASSES.keys():
         class_locs = np.where(mask == int(class_id))
         semseg_rgb[class_locs[0], class_locs[1], :] = CLASSES[class_id]
@@ -52,8 +52,12 @@ def main():
         label_fp = os.path.join(labels_dir, fn)
 
         img, label = cv2.imread(img_fp), cv2.imread(label_fp)
-        cv2.imshow('RGB', cv2.resize(img, (225, 150)))
-        cv2.imshow('SEMSEG', cv2.resize(mask_to_rgb(label), (225, 150)))
+        overlayed = cv2.addWeighted(img, 0.8, mask_to_rgb(label), 0.5, 0)
+        # cv2.imshow('RGB', cv2.resize(img, (225, 150)))
+        # cv2.imshow('SEMSEG', cv2.resize(mask_to_rgb(label), (225, 150)))
+        cv2.imshow('RGB', img)
+        cv2.imshow('SEMSEG', mask_to_rgb(label))
+        cv2.imshow('OVERLAY', overlayed)
         cv2.waitKey(0)
 
 

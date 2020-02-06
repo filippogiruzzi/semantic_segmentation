@@ -15,7 +15,8 @@ Carla simulator
 5. [ Project usage ](#5-project-usage)  
     5.1 [ Record raw data to .tfrecord format ](#51-record-raw-data-to-tfrecord-format)  
     5.2 [ Train a UNet for Semantic Segmentation ](#52-train-a-unet-for-semantic-segmentation)  
-    5.3 [ Export trained model & run inference on Test set ](#53-export-trained-model--run-inference-on-test-set)  
+    5.3 [ Visualize predictions with trained model ](#53-visualize-predictions-with-trained-model)  
+    5.4 [ Export trained model & run inference on Test set ](#54-export-trained-model--run-inference-on-test-set)
 6. [ Todo ](#6-todo)
 7. [ Resources ](#7-resources)
 
@@ -45,7 +46,7 @@ The designed solution is based on a UNet model implemented in TensorFlow.
 
 ### 2.2 Results
 
-| Model | Train acc. | Val acc. | Test acc. |
+| Model | Train loss. | Val loss. | Test loss. |
 | :---: |:---:| :---:| :---: |
 | UNet |  |  |  |
 
@@ -91,13 +92,23 @@ This will record the splitted data to `.tfrecord` format in `/path/to/carla_sems
 $ python3 training/train.py --data-dir /path/to/carla_semseg_data/tfrecords/
 ```
 
-### 5.3 Export trained model & run inference on Test set
+### 5.3 Visualize predictions with trained model
+
+```
+$ python3 training/train.py --data-dir /path/to/carla_semseg_data/tfrecords/
+                            --mode predict
+                            --model-dir /path/to/trained/model/dir/
+                            --ckpt /path/to/trained/model/dir/
+```
+
+### 5.4 Export trained model & run inference on Test set
 
 ## 6. Todo
 
 - [ ] Full training on Google Colab & update results
 - [ ] Google Colab demo
 - [ ] Inference scripts
+- [ ] Add data augmentation
 
 ## 7. Resources
 

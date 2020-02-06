@@ -22,11 +22,11 @@ def main():
     parser.add_argument('--ckpt', type=str, default='', help='pretrained checkpoint directory')
     parser.add_argument('--mode', '-m', type=str, default='train', help='train, eval or predict')
     parser.add_argument('--model', type=str, default='unet', help='model name')
-    parser.add_argument('--input-size', type=str, default='256x256', help='image input size')
-    parser.add_argument('--batch-size', '-bs', type=int, default=16, help='batch size')
+    parser.add_argument('--input-size', type=str, default='512x512', help='image input size')
+    parser.add_argument('--batch-size', '-bs', type=int, default=8, help='batch size')
     parser.add_argument('--epochs', '-e', type=int, default=100, help='train epochs')
     parser.add_argument('--n-classes', '-n', type=int, default=13, help='number of classes in output')
-    parser.add_argument('--learning-rate', '-lr', type=float, default=0.0001, help='initial learning rate')
+    parser.add_argument('--learning-rate', '-lr', type=float, default=0.001, help='initial learning rate')
     parser.add_argument('--fake-input', action='store_true', default=False, help='debug with 1 batch training')
     args = parser.parse_args()
 
@@ -62,7 +62,7 @@ def main():
 
     train_config = tf.estimator.RunConfig(save_summary_steps=10,
                                           save_checkpoints_steps=500,
-                                          keep_checkpoint_max=20,
+                                          keep_checkpoint_max=10,
                                           log_step_count_steps=10)
 
     ws = None
@@ -131,8 +131,8 @@ def main():
             img_input = pred['img_input']
             pred = pred['semseg']
 
-            cv2.imshow('RGB', img_input)
-            cv2.imshow('SEMSEG', mask_to_rgb(pred))
+            cv2.imshow('RGB', cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR))
+            cv2.imshow('SEMSEG', mask_to_rgb(pred, ax=-1))
             cv2.waitKey(0)
 
 

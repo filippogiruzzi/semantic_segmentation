@@ -116,7 +116,7 @@ def main():
     dataset = get_dataset(tfrecords,
                           batch_size=32,
                           epochs=1,
-                          input_size=(256, 256),
+                          input_size=(512, 512),
                           shuffle=False,
                           fake_input=False)
     print('\nDataset out types {}'.format(dataset.output_types))

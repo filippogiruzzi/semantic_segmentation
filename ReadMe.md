@@ -118,4 +118,12 @@ O. Ronneberger, P. Fischer, T. Brox,
 2015, [ Arxiv ](https://arxiv.org/abs/1505.04597)
 * _Losses for Image Segmentation_, 
 L. Nieradzik, [ Blog post ](https://lars76.github.io/neural-networks/object-detection/losses-for-segmentation/)
+* _Carla Simulator_, 
+A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun, 
+[ Website ](http://carla.org/)
+* _CARLA: An Open Urban Driving Simulator_, 
+A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, V. Koltun, 
+2017, [ Arxiv ](https://arxiv.org/abs/1711.03938)
+* _Lyft Udacity challenge_, 
+[ Website ](https://www.udacity.com/lyft-challenge)
 

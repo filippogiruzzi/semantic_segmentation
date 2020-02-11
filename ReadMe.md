@@ -42,7 +42,8 @@ $ pip3 install -e . --user --upgrade
 The purpose of this project is to design and implement 
 a real-time Semantic Segmentation algorithm based on Deep Learning.
 
-The designed solution is based on a UNet model implemented in TensorFlow.
+The designed solution is based on a UNet model implemented in TensorFlow. I use a Focal loss 
+to solve the unbalanced data problem among the classes.
 
 ### 2.2 Results
 

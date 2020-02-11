@@ -132,7 +132,7 @@ def main():
             pred = pred['semseg']
 
             cv2.imshow('RGB', cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR))
-            cv2.imshow('SEMSEG', mask_to_rgb(pred, ax=-1))
+            cv2.imshow('SEMSEG', cv2.medianBlur(mask_to_rgb(pred, ax=-1), 5))
             cv2.waitKey(0)
 
 

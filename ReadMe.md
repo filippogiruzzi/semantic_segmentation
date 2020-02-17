@@ -47,9 +47,15 @@ to solve the unbalanced data problem among the classes.
 
 ### 2.2 Results
 
+The model was trained  on Google Colab for approximately 200 epochs with the 
+default parameters.
+
 | Model | Train loss. | Val loss. | Test loss. |
 | :---: |:---:| :---:| :---: |
-| UNet |  |  |  |
+| UNet | 1141 | 1262 | 1262 |
+
+![alt text](pics/pred_rgb.png "Input RGB")
+![alt text](pics/pred_semseg.png "Semantic Segmentation prediction")
 
 ## 3. Project structure
 
@@ -106,7 +112,8 @@ $ python3 training/train.py --data-dir /path/to/carla_semseg_data/tfrecords/
 
 ## 6. Todo
 
-- [ ] Full training on Google Colab & update results
+- [x] Full training on Google Colab & update results
+- [ ] Fix background loss bug & retrain
 - [ ] Google Colab demo
 - [ ] Inference scripts
 - [ ] Add data augmentation

@@ -107,7 +107,7 @@ def main():
 
     # Evaluation on Test set
     elif mode == tf.estimator.ModeKeys.EVAL:
-        test_input_fn = data_input_fn(tfrecords_val,
+        test_input_fn = data_input_fn(tfrecords_test,
                                       batch_size=params['batch_size'],
                                       epochs=1,
                                       input_size=input_size,
@@ -131,6 +131,8 @@ def main():
             img_input = pred['img_input']
             pred = pred['semseg']
 
+            # cv2.imshow('RGB', cv2.resize(cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR), (225, 150)))
+            # cv2.imshow('SEMSEG', cv2.resize(cv2.medianBlur(mask_to_rgb(pred, ax=-1), 5), (225, 150)))
             cv2.imshow('RGB', cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR))
             cv2.imshow('SEMSEG', cv2.medianBlur(mask_to_rgb(pred, ax=-1), 5))
             cv2.waitKey(0)

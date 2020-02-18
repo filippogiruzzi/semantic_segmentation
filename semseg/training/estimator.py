@@ -40,8 +40,9 @@ class SemsegEstimator(object):
         loss_func = focal_loss(alpha=0.25, gamma=2)
         losses = loss_func(y_true=one_hot_label, y_pred=pred)
 
-        loss_mask = label > 0
-        masked_loss = tf.where(loss_mask, losses, tf.zeros_like(losses, dtype=tf.float32))
+        # loss_mask = label > 0
+        # masked_loss = tf.where(loss_mask, losses, tf.zeros_like(losses, dtype=tf.float32))
+        masked_loss = losses
         loss = tf.reduce_sum(masked_loss, axis=(1, 2))
         loss = tf.reduce_mean(loss)
 
@@ -72,6 +73,7 @@ class SemsegEstimator(object):
             predictions = {
                 'img_input': features['img_input'],
                 'semseg': tf.nn.softmax(preds, axis=-1)
+                # 'semseg': tf.nn.sigmoid(preds)
             }
             export_outputs = {'predictions': tf.estimator.export.PredictOutput(predictions)}
             return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions, export_outputs=export_outputs)

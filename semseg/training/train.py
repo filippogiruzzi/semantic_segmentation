@@ -131,6 +131,8 @@ def main():
             img_input = pred['img_input']
             pred = pred['semseg']
 
+            # print(np.where(np.argmax(pred, axis=-1) == 0))
+
             # cv2.imshow('RGB', cv2.resize(cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR), (225, 150)))
             # cv2.imshow('SEMSEG', cv2.resize(cv2.medianBlur(mask_to_rgb(pred, ax=-1), 5), (225, 150)))
             cv2.imshow('RGB', cv2.cvtColor(img_input, cv2.COLOR_RGB2BGR))
